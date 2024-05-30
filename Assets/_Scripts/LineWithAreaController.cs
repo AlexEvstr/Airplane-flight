@@ -53,8 +53,10 @@ public class LineWithAreaController : MonoBehaviour
     Vector3 GetArcPosition(float t)
     {
         float x = Mathf.Lerp(startPoint.position.x, planeTransform.position.x, t);
-        float midPointX = (startPoint.position.x + planeTransform.position.x) / 2;
         float y = Mathf.Lerp(startPoint.position.y, planeTransform.position.y, t) - arcHeight * Mathf.Sin(Mathf.PI * t);
+
+        // Убедитесь, что дуга не опускается ниже начальной точки
+        y = Mathf.Max(y, startPoint.position.y);
 
         return new Vector3(x, y, 0);
     }
@@ -65,12 +67,10 @@ public class LineWithAreaController : MonoBehaviour
         Vector3[] vertices = new Vector3[points.Count * 2];
         int[] triangles = new int[(points.Count - 1) * 6];
 
-        float screenBottom = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0, -Camera.main.transform.position.z)).y;
-
         for (int i = 0; i < points.Count; i++)
         {
             vertices[i * 2] = points[i];
-            vertices[i * 2 + 1] = new Vector3(points[i].x, screenBottom, points[i].z);
+            vertices[i * 2 + 1] = new Vector3(points[i].x, startPoint.position.y, points[i].z);
         }
 
         for (int i = 0; i < points.Count - 1; i++)
