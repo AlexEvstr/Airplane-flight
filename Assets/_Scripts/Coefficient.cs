@@ -1,18 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Coefficient : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private TMP_Text _coefficientText;
+    private float _coefficient = 0f;
+
+    private void Start()
     {
-        
+        StartCoroutine(IncreaseScore());
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator IncreaseScore()
     {
-        
+        while(true)
+        {
+            _coefficient += 0.05f;
+            _coefficientText.text = _coefficient.ToString("f2") + "x";
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 }
