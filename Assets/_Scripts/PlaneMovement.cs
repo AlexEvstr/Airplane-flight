@@ -7,10 +7,11 @@ public class PlaneMovement : MonoBehaviour
     private Vector2 endPoint = new Vector2(1, 2);
     private float duration = 5f; // Время, за которое самолет достигнет конечной точки
     private float arcHeight = 0.5f; // Максимальная высота дуги
-    private float bounceSpeed = 0.2f; // Скорость движения вверх-вниз
 
-    private float minY = -0.7f; // Нижняя граница
-    private float maxY = 4f; // Верхняя граница
+    private float minY = -1f; // Нижняя граница
+    private float maxY = 3f; // Верхняя граница
+    private float minX = -1f; // Левая граница
+    private float maxX = 2f; // Правая граница
 
     void Start()
     {
@@ -32,27 +33,30 @@ public class PlaneMovement : MonoBehaviour
             yield return null;
         }
 
-        // Переход к осциллирующему движению без рывков
-        StartCoroutine(OscillateVertically());
+        StartCoroutine(RandomMovement());
     }
 
-    IEnumerator OscillateVertically()
+    IEnumerator RandomMovement()
     {
-        float elapsedTime = 0f;
-        float initialY = transform.position.y;
-
         while (true)
         {
-            elapsedTime += Time.deltaTime;
-            float normalizedSin = Mathf.Sin(elapsedTime * bounceSpeed * Mathf.PI * 2);
-            float y = Mathf.Lerp(minY, maxY, (normalizedSin + 1f) / 2f);
+            float targetX = Random.Range(minX, maxX);
+            float targetY = Random.Range(minY, maxY);
+            float moveDuration = Random.Range(0.5f, 2.5f);
+            float moveElapsedTime = 0f;
 
-            // Обеспечиваем плавный переход, начиная осцилляцию от текущей позиции
-            float currentY = Mathf.Lerp(initialY, y, elapsedTime / duration);
+            Vector2 startPosition = transform.position;
+            Vector2 targetPosition = new Vector2(targetX, targetY);
 
-            transform.position = new Vector3(endPoint.x, currentY, transform.position.z);
+            while (moveElapsedTime < moveDuration)
+            {
+                moveElapsedTime += Time.deltaTime;
+                float t = moveElapsedTime / moveDuration;
+                Vector2 newPosition = Vector2.Lerp(startPosition, targetPosition, t);
+                transform.position = new Vector3(newPosition.x, newPosition.y, transform.position.z);
 
-            yield return null;
+                yield return null;
+            }
         }
     }
 
