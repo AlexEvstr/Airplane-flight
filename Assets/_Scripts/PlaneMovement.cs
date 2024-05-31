@@ -12,10 +12,16 @@ public class PlaneMovement : MonoBehaviour
     private float maxY = 3f; // Верхняя граница
     private float minX = -1f; // Левая граница
     private float maxX = 2f; // Правая граница
+    private float elapsedTime = 0f;
+    private bool reachedEndPoint = false;
+    private GameObject lineWithArea; // Объект LineWithArea
+    private Coroutine randomMovementCoroutine;
 
     void Start()
     {
+        lineWithArea = GameObject.Find("LineWithArea"); // Ищем объект LineWithArea
         StartCoroutine(FlyAlongArc());
+        StartCoroutine(RandomTimer());
     }
 
     IEnumerator FlyAlongArc()
@@ -33,7 +39,8 @@ public class PlaneMovement : MonoBehaviour
             yield return null;
         }
 
-        StartCoroutine(RandomMovement());
+        reachedEndPoint = true;
+        randomMovementCoroutine = StartCoroutine(RandomMovement());
     }
 
     IEnumerator RandomMovement()
@@ -57,6 +64,30 @@ public class PlaneMovement : MonoBehaviour
 
                 yield return null;
             }
+        }
+    }
+
+    IEnumerator RandomTimer()
+    {
+        float waitTime = Random.Range(1f, 10f);
+        yield return new WaitForSeconds(waitTime);
+
+        // Прекращение текущего движения и запуск взлета вверх вправо
+        StopAllCoroutines();
+        StartCoroutine(FlyUpRight());
+    }
+
+    IEnumerator FlyUpRight()
+    {
+        if (lineWithArea != null)
+        {
+            Destroy(lineWithArea);
+        }
+
+        while (true)
+        {
+            transform.position += new Vector3(1, 1, 0) * 10 * Time.deltaTime;
+            yield return null;
         }
     }
 
