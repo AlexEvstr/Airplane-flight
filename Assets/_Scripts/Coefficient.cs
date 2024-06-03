@@ -6,19 +6,25 @@ using TMPro;
 public class Coefficient : MonoBehaviour
 {
     [SerializeField] private TMP_Text _coefficientText;
-    private float _coefficient = 0f;
+    [SerializeField] private GameObject _lineWithArea;
+    public static float CurrentCoefficient;
 
     private void Start()
+    {
+        CurrentCoefficient = 0.00f;
+    }
+
+    public void StartCounting()
     {
         StartCoroutine(IncreaseScore());
     }
 
     private IEnumerator IncreaseScore()
     {
-        while(true)
+        while(_lineWithArea != null)
         {
-            _coefficient += 0.05f;
-            _coefficientText.text = _coefficient.ToString("f2") + "x";
+            CurrentCoefficient += 0.05f;
+            _coefficientText.text = CurrentCoefficient.ToString("f2") + "x";
             yield return new WaitForSeconds(0.1f);
         }
     }

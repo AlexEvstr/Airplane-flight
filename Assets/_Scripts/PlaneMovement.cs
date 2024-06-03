@@ -12,16 +12,27 @@ public class PlaneMovement : MonoBehaviour
     private float maxY = 3f; // Верхняя граница
     private float minX = -1f; // Левая граница
     private float maxX = 2f; // Правая граница
-    private float elapsedTime = 0f;
-    private bool reachedEndPoint = false;
     private GameObject lineWithArea; // Объект LineWithArea
     private Coroutine randomMovementCoroutine;
+
+    [SerializeField] private GameObject _losePanel;
+    [SerializeField] private GameObject _winPanel;
+    [SerializeField] private Coefficient _coefficient;
+    [SerializeField] private BettingSystem _bettingSystem;
+    [SerializeField] private GameObject _takeOutBtn;
 
     void Start()
     {
         lineWithArea = GameObject.Find("LineWithArea"); // Ищем объект LineWithArea
+    }
+
+
+    public void StartBtn()
+    {
+        _coefficient.StartCounting();
         StartCoroutine(FlyAlongArc());
         StartCoroutine(RandomTimer());
+        _takeOutBtn.SetActive(true);
     }
 
     IEnumerator FlyAlongArc()
@@ -39,7 +50,6 @@ public class PlaneMovement : MonoBehaviour
             yield return null;
         }
 
-        reachedEndPoint = true;
         randomMovementCoroutine = StartCoroutine(RandomMovement());
     }
 
@@ -71,9 +81,9 @@ public class PlaneMovement : MonoBehaviour
     {
         float waitTime = Random.Range(1f, 10f);
         yield return new WaitForSeconds(waitTime);
-
-        // Прекращение текущего движения и запуск взлета вверх вправо
+        _takeOutBtn.SetActive(false);
         StopAllCoroutines();
+        ShowLose();
         StartCoroutine(FlyUpRight());
     }
 
@@ -98,5 +108,30 @@ public class PlaneMovement : MonoBehaviour
         y = Mathf.Max(y, startPoint.y); // Убедитесь, что y не опускается ниже начальной точки
 
         return new Vector2(x, y);
+    }
+
+    private IEnumerator ShowLosePanel()
+    {
+        yield return new WaitForSeconds(1f);
+        _losePanel.SetActive(true);
+    }
+
+    private void ShowLose()
+    {
+        StartCoroutine(ShowLosePanel());
+    }
+
+    private IEnumerator ShowWinPanel()
+    {
+        yield return new WaitForSeconds(1f);
+        _winPanel.SetActive(true);
+        _bettingSystem.WinBehavior();
+    }
+
+    public void ShowWin()
+    {
+        StopAllCoroutines();
+        StartCoroutine(FlyUpRight());
+        StartCoroutine(ShowWinPanel());
     }
 }
