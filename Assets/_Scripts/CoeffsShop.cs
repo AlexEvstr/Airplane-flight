@@ -53,6 +53,7 @@ public class CoeffsShop : MonoBehaviour
                 return;
             }
         }
+
         _flag.transform.SetParent(transform);
         RectTransform parentRect = GetComponent<RectTransform>();
         RectTransform childRect = _flag.GetComponent<RectTransform>();

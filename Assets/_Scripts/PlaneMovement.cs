@@ -30,7 +30,7 @@ public class PlaneMovement : MonoBehaviour
 
     void Start()
     {
-        _maxTime = _maxTimes[int.Parse(PlayerPrefs.GetString("maxCoeffSelected"))];
+        _maxTime = _maxTimes[int.Parse(PlayerPrefs.GetString("maxCoeffSelected", "0"))];
         _isWin = false;
         lineWithArea = GameObject.Find("LineWithArea"); // Ищем объект LineWithArea
     }
