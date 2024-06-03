@@ -41,14 +41,14 @@ public class BettingSystem : MonoBehaviour
     {
         if (Auto)
         {
-            _autoBtn.GetComponent<Image>().color = Color.red;
-            _manualBtn.GetComponent<Image>().color = new Color(1,1,1,1);
+            _autoBtn.GetComponent<Image>().color = Color.white;
+            _manualBtn.GetComponent<Image>().color = Color.black;
             _autoCashOut.SetActive(true);
         }
         else
         {
-            _autoBtn.GetComponent<Image>().color = new Color(1, 1, 1, 1);
-            _manualBtn.GetComponent<Image>().color = Color.red;
+            _autoBtn.GetComponent<Image>().color = Color.black;
+            _manualBtn.GetComponent<Image>().color = Color.white;
             _autoCashOut.SetActive(false);
         }
     }
