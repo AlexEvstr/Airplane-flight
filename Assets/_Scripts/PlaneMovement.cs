@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class PlaneMovement : MonoBehaviour
@@ -20,15 +21,23 @@ public class PlaneMovement : MonoBehaviour
     [SerializeField] private Coefficient _coefficient;
     [SerializeField] private BettingSystem _bettingSystem;
     [SerializeField] private GameObject _takeOutBtn;
+    [SerializeField] private Button[] _buttons;
+
+    private bool _isWin;
 
     void Start()
     {
+        _isWin = false;
         lineWithArea = GameObject.Find("LineWithArea"); // Ищем объект LineWithArea
     }
 
 
     public void StartBtn()
     {
+        foreach (var button in _buttons)
+        {
+            button.enabled = false;
+        }
         _coefficient.StartCounting();
         StartCoroutine(FlyAlongArc());
         StartCoroutine(RandomTimer());
@@ -133,5 +142,15 @@ public class PlaneMovement : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(FlyUpRight());
         StartCoroutine(ShowWinPanel());
+    }
+
+    private void Update()
+    {
+        if (BettingSystem.AutoCashOutAmout.ToString("f2") == Coefficient.CurrentCoefficient.ToString("f2") && BettingSystem.Auto && !_isWin)
+        {
+            Debug.Log("yep");
+            ShowWin();
+            _isWin = true;
+        }
     }
 }
