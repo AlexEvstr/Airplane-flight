@@ -148,7 +148,6 @@ public class PlaneMovement : MonoBehaviour
     {
         if (BettingSystem.AutoCashOutAmout.ToString("f2") == Coefficient.CurrentCoefficient.ToString("f2") && BettingSystem.Auto && !_isWin)
         {
-            Debug.Log("yep");
             ShowWin();
             _isWin = true;
         }

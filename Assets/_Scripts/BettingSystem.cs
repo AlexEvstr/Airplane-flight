@@ -23,10 +23,17 @@ public class BettingSystem : MonoBehaviour
         int auto = PlayerPrefs.GetInt("autoBet", 0);
         if (auto == 0) Auto = false;
         else Auto = true;
-        _currentBet = PlayerPrefs.GetFloat("CurrentBet", 100);
-        _currentBetText.text = _currentBet.ToString();
+        
         _balance = PlayerPrefs.GetFloat("balance", 1000);
         _balanceText.text = _balance.ToString("f0");
+        _currentBet = PlayerPrefs.GetFloat("CurrentBet", 100);
+        if (_currentBet > _balance)
+        {
+            _currentBet = _balance;
+            PlayerPrefs.SetFloat("CurrentBet", _currentBet);
+        }
+        _currentBetText.text = _currentBet.ToString("f0");
+
         AutoCashOutAmout = PlayerPrefs.GetFloat("autoCashOutAmout", 2.0f);
         _autoCashText.text = AutoCashOutAmout.ToString("f2");
     }
@@ -61,12 +68,12 @@ public class BettingSystem : MonoBehaviour
 
     public void IncreaseBet()
     {
-        if (_currentBet < 1000)
+        if (_currentBet < 1000 && _balance > _currentBet)
         {
             _currentBet += 10;
             PlayerPrefs.SetFloat("CurrentBet", _currentBet);
         }
-        _currentBetText.text = _currentBet.ToString();
+        _currentBetText.text = _currentBet.ToString("f0");
     }
 
     public void DecreaseBet()
@@ -76,7 +83,7 @@ public class BettingSystem : MonoBehaviour
             _currentBet -= 10;
             PlayerPrefs.SetFloat("CurrentBet", _currentBet);
         }
-        _currentBetText.text = _currentBet.ToString();
+        _currentBetText.text = _currentBet.ToString("f0");
     }
 
     public void WinBehavior()
@@ -112,6 +119,46 @@ public class BettingSystem : MonoBehaviour
             AutoCashOutAmout -= 0.1f;
             _autoCashText.text = AutoCashOutAmout.ToString("f2");
             PlayerPrefs.SetFloat("autoCashOutAmout", AutoCashOutAmout);
+        }
+    }
+
+    public void Bet50Coins()
+    {
+        if (_balance >= 50)
+        {
+            _currentBet = 50;
+            _currentBetText.text = _currentBet.ToString("f0");
+            PlayerPrefs.SetFloat("CurrentBet", _currentBet);
+        }
+    }
+
+    public void Bet250Coins()
+    {
+        if (_balance >= 250)
+        {
+            _currentBet = 250;
+            _currentBetText.text = _currentBet.ToString("f0");
+            PlayerPrefs.SetFloat("CurrentBet", _currentBet);
+        }
+    }
+
+    public void Bet500Coins()
+    {
+        if (_balance >= 500)
+        {
+            _currentBet = 500;
+            _currentBetText.text = _currentBet.ToString("f0");
+            PlayerPrefs.SetFloat("CurrentBet", _currentBet);
+        }
+    }
+
+    public void Bet1000Coins()
+    {
+        if (_balance >= 1000)
+        {
+            _currentBet = 1000;
+            _currentBetText.text = _currentBet.ToString("f0");
+            PlayerPrefs.SetFloat("CurrentBet", _currentBet);
         }
     }
 }
