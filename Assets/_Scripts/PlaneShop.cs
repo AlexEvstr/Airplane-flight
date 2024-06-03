@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using static Unity.VisualScripting.Metadata;
 
 public class PlaneShop : MonoBehaviour
 {
@@ -24,7 +25,12 @@ public class PlaneShop : MonoBehaviour
             if (PlayerPrefs.GetString("planeSelected", "0") == gameObject.name)
             {
                 _flag.transform.SetParent(transform);
-                _flag.transform.position = new Vector2(transform.position.x + 150, transform.position.y + 250);
+                RectTransform parentRect = GetComponent<RectTransform>();
+                RectTransform childRect = _flag.GetComponent<RectTransform>();
+                childRect.anchorMin = new Vector2(1, 1);
+                childRect.anchorMax = new Vector2(1, 1);
+                childRect.pivot = new Vector2(1, 1);
+                childRect.anchoredPosition = new Vector2(50, 50);
             }
         }
     }
@@ -47,8 +53,15 @@ public class PlaneShop : MonoBehaviour
                 return;
             }
         }
+
         _flag.transform.SetParent(transform);
-        _flag.transform.position = new Vector2(transform.position.x + 150, transform.position.y + 250);
+        RectTransform parentRect = GetComponent<RectTransform>();
+        RectTransform childRect = _flag.GetComponent<RectTransform>();
+        childRect.anchorMin = new Vector2(1, 1);
+        childRect.anchorMax = new Vector2(1, 1);
+        childRect.pivot = new Vector2(1, 1);
+        childRect.anchoredPosition = new Vector2(50, 50);
+
         PlayerPrefs.SetInt("plane", int.Parse(gameObject.name));
         PlayerPrefs.SetString("planeSelected", gameObject.name);
     }

@@ -25,7 +25,12 @@ public class CoeffsShop : MonoBehaviour
             if (PlayerPrefs.GetString("maxCoeffSelected", "0") == gameObject.name)
             {
                 _flag.transform.SetParent(transform);
-                _flag.transform.position = new Vector2(transform.position.x + 150, transform.position.y + 250);
+                RectTransform parentRect = GetComponent<RectTransform>();
+                RectTransform childRect = _flag.GetComponent<RectTransform>();
+                childRect.anchorMin = new Vector2(1, 1);
+                childRect.anchorMax = new Vector2(1, 1);
+                childRect.pivot = new Vector2(1, 1);
+                childRect.anchoredPosition = new Vector2(50, 50);
             }
         }
     }
@@ -49,7 +54,13 @@ public class CoeffsShop : MonoBehaviour
             }
         }
         _flag.transform.SetParent(transform);
-        _flag.transform.position = new Vector2(transform.position.x + 150, transform.position.y + 250);
+        RectTransform parentRect = GetComponent<RectTransform>();
+        RectTransform childRect = _flag.GetComponent<RectTransform>();
+        childRect.anchorMin = new Vector2(1, 1);
+        childRect.anchorMax = new Vector2(1, 1);
+        childRect.pivot = new Vector2(1, 1);
+        childRect.anchoredPosition = new Vector2(50, 50);
+
         PlayerPrefs.SetInt("maxCoeff", int.Parse(gameObject.name));
         PlayerPrefs.SetString("maxCoeffSelected", gameObject.name);
     }
