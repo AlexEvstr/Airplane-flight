@@ -62,6 +62,11 @@ public class BackgroundShop : MonoBehaviour
         childRect.anchorMax = new Vector2(1, 1);
         childRect.pivot = new Vector2(1, 1);
         childRect.anchoredPosition = new Vector2(50, 50);
+
+
+        PlayerPrefs.SetInt("background", int.Parse(gameObject.name));
+        PlayerPrefs.SetString("backgroundSelected", gameObject.name);
+        _background.sprite = _backgroundSprites[int.Parse(gameObject.name)];
     }
 
     private void Update()
