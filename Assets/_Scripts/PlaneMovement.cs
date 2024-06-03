@@ -23,10 +23,14 @@ public class PlaneMovement : MonoBehaviour
     [SerializeField] private GameObject _takeOutBtn;
     [SerializeField] private Button[] _buttons;
 
+    private float _maxTime;
+    [SerializeField] private float[] _maxTimes;
+
     private bool _isWin;
 
     void Start()
     {
+        _maxTime = _maxTimes[int.Parse(PlayerPrefs.GetString("maxCoeffSelected"))];
         _isWin = false;
         lineWithArea = GameObject.Find("LineWithArea"); // Ищем объект LineWithArea
     }
@@ -88,7 +92,7 @@ public class PlaneMovement : MonoBehaviour
 
     IEnumerator RandomTimer()
     {
-        float waitTime = Random.Range(1f, 10f);
+        float waitTime = Random.Range(1f, _maxTime);
         yield return new WaitForSeconds(waitTime);
         _takeOutBtn.SetActive(false);
         StopAllCoroutines();

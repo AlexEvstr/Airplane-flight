@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class MenuBtns : MonoBehaviour
@@ -12,6 +11,14 @@ public class MenuBtns : MonoBehaviour
     [SerializeField] private GameObject _planesWindow;
     [SerializeField] private GameObject _backgroundsWindow;
     [SerializeField] private GameObject _coefficientsWindow;
+
+    [SerializeField] private Image _background;
+    [SerializeField] private Sprite[] _backgroundSprites;
+
+    private void Start()
+    {
+        _background.sprite = _backgroundSprites[int.Parse(PlayerPrefs.GetString("backgroundSelected", "0"))];
+    }
 
     public void PlayGame()
     {
