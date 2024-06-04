@@ -223,18 +223,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1369867779}
-        m_TargetAssemblyTypeName: AudioVibroManager, Assembly-CSharp
-        m_MethodName: PlayClickSound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &31850966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,7 +273,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e994112e9e14a40e795d220b6b35c8b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moneyText: {fileID: 1342181753}
+  _planeMoneyText: {fileID: 1292829272}
+  _bgMoneyText: {fileID: 1342181753}
+  _coeffMoneyText: {fileID: 364972286}
   _price: 0
   _priceGroup: {fileID: 1263836173}
   _purchased: {fileID: 1378326582}
@@ -298,6 +288,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f93f363bafdcd4cdebfef337e957e791, type: 3}
   - {fileID: 21300000, guid: aa1fc1c9a37744ec7b301870a56445ab, type: 3}
   - {fileID: 21300000, guid: a534a235b78c6466faf77bfc8c7734a4, type: 3}
+  _audioVibroManager: {fileID: 1369867779}
 --- !u!1 &39179418
 GameObject:
   m_ObjectHideFlags: 0
@@ -1777,18 +1768,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1369867779}
-        m_TargetAssemblyTypeName: AudioVibroManager, Assembly-CSharp
-        m_MethodName: PlayClickSound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &323787821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1839,12 +1818,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e1ed42658934c0dabeb72980e2c61e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moneyText: {fileID: 364972286}
+  _planeMoneyText: {fileID: 1292829272}
+  _bgMoneyText: {fileID: 1342181753}
+  _coeffMoneyText: {fileID: 364972286}
   _price: 0
   _priceGroup: {fileID: 2137069491}
   _purchased: {fileID: 954750810}
   _selected: {fileID: 1079870708}
   _flag: {fileID: 972473832}
+  _audioVibroManager: {fileID: 1369867779}
 --- !u!1 &351586931
 GameObject:
   m_ObjectHideFlags: 0
@@ -1896,14 +1878,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6792453, g: 0.6504094, b: 0.6504094, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 5bda2f68ce1664344bc30e0a6ec9842e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2020,18 +2002,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1369867779}
-        m_TargetAssemblyTypeName: AudioVibroManager, Assembly-CSharp
-        m_MethodName: PlayClickSound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &352781013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2082,7 +2052,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e994112e9e14a40e795d220b6b35c8b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moneyText: {fileID: 1342181753}
+  _planeMoneyText: {fileID: 1292829272}
+  _bgMoneyText: {fileID: 1342181753}
+  _coeffMoneyText: {fileID: 364972286}
   _price: 75000
   _priceGroup: {fileID: 1039204557}
   _purchased: {fileID: 461014088}
@@ -2095,6 +2067,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f93f363bafdcd4cdebfef337e957e791, type: 3}
   - {fileID: 21300000, guid: aa1fc1c9a37744ec7b301870a56445ab, type: 3}
   - {fileID: 21300000, guid: a534a235b78c6466faf77bfc8c7734a4, type: 3}
+  _audioVibroManager: {fileID: 1369867779}
 --- !u!1 &363760591
 GameObject:
   m_ObjectHideFlags: 0
@@ -3037,18 +3010,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1369867779}
-        m_TargetAssemblyTypeName: AudioVibroManager, Assembly-CSharp
-        m_MethodName: PlayClickSound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &428227514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3099,12 +3060,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e45786c4588104877902c1c910a9ea1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moneyText: {fileID: 1292829272}
+  _planeMoneyText: {fileID: 1292829272}
+  _bgMoneyText: {fileID: 1342181753}
+  _coeffMoneyText: {fileID: 364972286}
   _price: 0
   _priceGroup: {fileID: 1011785188}
   _purchased: {fileID: 1244662385}
   _selected: {fileID: 828230417}
   _flag: {fileID: 1694875399}
+  _audioVibroManager: {fileID: 1369867779}
 --- !u!1 &429620919
 GameObject:
   m_ObjectHideFlags: 0
@@ -3827,18 +3791,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1369867779}
-        m_TargetAssemblyTypeName: AudioVibroManager, Assembly-CSharp
-        m_MethodName: PlayClickSound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &584038729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3889,12 +3841,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e45786c4588104877902c1c910a9ea1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moneyText: {fileID: 1292829272}
+  _planeMoneyText: {fileID: 1292829272}
+  _bgMoneyText: {fileID: 1342181753}
+  _coeffMoneyText: {fileID: 364972286}
   _price: 1000
   _priceGroup: {fileID: 1976065205}
   _purchased: {fileID: 779480449}
   _selected: {fileID: 1332018035}
   _flag: {fileID: 1694875399}
+  _audioVibroManager: {fileID: 1369867779}
 --- !u!1 &592926646
 GameObject:
   m_ObjectHideFlags: 0
@@ -3994,18 +3949,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1369867779}
-        m_TargetAssemblyTypeName: AudioVibroManager, Assembly-CSharp
-        m_MethodName: PlayClickSound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &592926650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4056,7 +3999,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e994112e9e14a40e795d220b6b35c8b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moneyText: {fileID: 1342181753}
+  _planeMoneyText: {fileID: 1292829272}
+  _bgMoneyText: {fileID: 1342181753}
+  _coeffMoneyText: {fileID: 364972286}
   _price: 2000
   _priceGroup: {fileID: 1713442096}
   _purchased: {fileID: 1434144947}
@@ -4069,6 +4014,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f93f363bafdcd4cdebfef337e957e791, type: 3}
   - {fileID: 21300000, guid: aa1fc1c9a37744ec7b301870a56445ab, type: 3}
   - {fileID: 21300000, guid: a534a235b78c6466faf77bfc8c7734a4, type: 3}
+  _audioVibroManager: {fileID: 1369867779}
 --- !u!1 &595308672
 GameObject:
   m_ObjectHideFlags: 0
@@ -4400,18 +4346,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1369867779}
-        m_TargetAssemblyTypeName: AudioVibroManager, Assembly-CSharp
-        m_MethodName: PlayClickSound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &623369751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4462,12 +4396,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e1ed42658934c0dabeb72980e2c61e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moneyText: {fileID: 364972286}
+  _planeMoneyText: {fileID: 1292829272}
+  _bgMoneyText: {fileID: 1342181753}
+  _coeffMoneyText: {fileID: 364972286}
   _price: 50000
   _priceGroup: {fileID: 1097582481}
   _purchased: {fileID: 750177876}
   _selected: {fileID: 99794099}
   _flag: {fileID: 972473832}
+  _audioVibroManager: {fileID: 1369867779}
 --- !u!1 &628251934
 GameObject:
   m_ObjectHideFlags: 0
@@ -4778,18 +4715,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1369867779}
-        m_TargetAssemblyTypeName: AudioVibroManager, Assembly-CSharp
-        m_MethodName: PlayClickSound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &657435240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4840,12 +4765,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e45786c4588104877902c1c910a9ea1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moneyText: {fileID: 1292829272}
+  _planeMoneyText: {fileID: 1292829272}
+  _bgMoneyText: {fileID: 1342181753}
+  _coeffMoneyText: {fileID: 364972286}
   _price: 100000
   _priceGroup: {fileID: 1485711824}
   _purchased: {fileID: 966724670}
   _selected: {fileID: 850931385}
   _flag: {fileID: 1694875399}
+  _audioVibroManager: {fileID: 1369867779}
 --- !u!1 &695343461
 GameObject:
   m_ObjectHideFlags: 0
@@ -5911,18 +5839,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1369867779}
-        m_TargetAssemblyTypeName: AudioVibroManager, Assembly-CSharp
-        m_MethodName: PlayClickSound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &793454113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5973,7 +5889,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e994112e9e14a40e795d220b6b35c8b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moneyText: {fileID: 1342181753}
+  _planeMoneyText: {fileID: 1292829272}
+  _bgMoneyText: {fileID: 1342181753}
+  _coeffMoneyText: {fileID: 364972286}
   _price: 20000
   _priceGroup: {fileID: 1442423165}
   _purchased: {fileID: 1721669468}
@@ -5986,6 +5904,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f93f363bafdcd4cdebfef337e957e791, type: 3}
   - {fileID: 21300000, guid: aa1fc1c9a37744ec7b301870a56445ab, type: 3}
   - {fileID: 21300000, guid: a534a235b78c6466faf77bfc8c7734a4, type: 3}
+  _audioVibroManager: {fileID: 1369867779}
 --- !u!1 &816662456
 GameObject:
   m_ObjectHideFlags: 0
@@ -7327,6 +7246,147 @@ RectTransform:
   m_AnchoredPosition: {x: -50, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &975629888
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 975629889}
+  - component: {fileID: 975629890}
+  - component: {fileID: 975629891}
+  m_Layer: 0
+  m_Name: BackgroundMusic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &975629889
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975629888}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &975629890
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975629888}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 4f96a5c1165964a6aa4607b3efac8f6c, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &975629891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975629888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07116ae851a36487cbaa80aa5a75d0f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &986783983
 GameObject:
   m_ObjectHideFlags: 0
@@ -8055,18 +8115,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1369867779}
-        m_TargetAssemblyTypeName: AudioVibroManager, Assembly-CSharp
-        m_MethodName: PlayClickSound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1082141421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8117,12 +8165,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e1ed42658934c0dabeb72980e2c61e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moneyText: {fileID: 364972286}
-  _price: 50000
+  _planeMoneyText: {fileID: 1292829272}
+  _bgMoneyText: {fileID: 1342181753}
+  _coeffMoneyText: {fileID: 364972286}
+  _price: 500000
   _priceGroup: {fileID: 2147140331}
   _purchased: {fileID: 1701190807}
   _selected: {fileID: 1348001126}
   _flag: {fileID: 972473832}
+  _audioVibroManager: {fileID: 1369867779}
 --- !u!1 &1097582481
 GameObject:
   m_ObjectHideFlags: 0
@@ -9272,18 +9323,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1369867779}
-        m_TargetAssemblyTypeName: AudioVibroManager, Assembly-CSharp
-        m_MethodName: PlayClickSound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1298442966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9334,12 +9373,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e45786c4588104877902c1c910a9ea1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moneyText: {fileID: 1292829272}
+  _planeMoneyText: {fileID: 1292829272}
+  _bgMoneyText: {fileID: 1342181753}
+  _coeffMoneyText: {fileID: 364972286}
   _price: 10000
   _priceGroup: {fileID: 1138476255}
   _purchased: {fileID: 1720757314}
   _selected: {fileID: 363760591}
   _flag: {fileID: 1694875399}
+  _audioVibroManager: {fileID: 1369867779}
 --- !u!1 &1316505301
 GameObject:
   m_ObjectHideFlags: 0
@@ -10641,7 +10683,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4f96a5c1165964a6aa4607b3efac8f6c, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -10740,6 +10782,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clickSound: {fileID: 8300000, guid: a82ca447033a046b48d2de0b6635dd08, type: 3}
+  _buySound: {fileID: 8300000, guid: 3a820cf0976c04993a67487e9ce71c93, type: 3}
 --- !u!1 &1378326582
 GameObject:
   m_ObjectHideFlags: 0
@@ -11720,18 +11763,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1369867779}
-        m_TargetAssemblyTypeName: AudioVibroManager, Assembly-CSharp
-        m_MethodName: PlayClickSound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1447178648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11782,12 +11813,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e1ed42658934c0dabeb72980e2c61e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moneyText: {fileID: 364972286}
+  _planeMoneyText: {fileID: 1292829272}
+  _bgMoneyText: {fileID: 1342181753}
+  _coeffMoneyText: {fileID: 364972286}
   _price: 5000
   _priceGroup: {fileID: 635975505}
   _purchased: {fileID: 2091345461}
   _selected: {fileID: 1242350140}
   _flag: {fileID: 972473832}
+  _audioVibroManager: {fileID: 1369867779}
 --- !u!1 &1454705172
 GameObject:
   m_ObjectHideFlags: 0
@@ -12183,18 +12217,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1369867779}
-        m_TargetAssemblyTypeName: AudioVibroManager, Assembly-CSharp
-        m_MethodName: PlayClickSound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1491874140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12245,7 +12267,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e994112e9e14a40e795d220b6b35c8b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moneyText: {fileID: 1342181753}
+  _planeMoneyText: {fileID: 1292829272}
+  _bgMoneyText: {fileID: 1342181753}
+  _coeffMoneyText: {fileID: 364972286}
   _price: 150000
   _priceGroup: {fileID: 351586931}
   _purchased: {fileID: 2017585271}
@@ -12258,6 +12282,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f93f363bafdcd4cdebfef337e957e791, type: 3}
   - {fileID: 21300000, guid: aa1fc1c9a37744ec7b301870a56445ab, type: 3}
   - {fileID: 21300000, guid: a534a235b78c6466faf77bfc8c7734a4, type: 3}
+  _audioVibroManager: {fileID: 1369867779}
 --- !u!1 &1499474422
 GameObject:
   m_ObjectHideFlags: 0
@@ -16334,3 +16359,4 @@ SceneRoots:
   - {fileID: 1979070926}
   - {fileID: 1801411356}
   - {fileID: 1369867777}
+  - {fileID: 975629889}

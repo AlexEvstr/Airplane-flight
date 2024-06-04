@@ -1,22 +1,27 @@
 using UnityEngine;
 using TMPro;
-using static Unity.VisualScripting.Metadata;
 
 public class PlaneShop : MonoBehaviour
 {
-    [SerializeField] private TMP_Text _moneyText;
+    [SerializeField] private TMP_Text _planeMoneyText;
+    [SerializeField] private TMP_Text _bgMoneyText;
+    [SerializeField] private TMP_Text _coeffMoneyText;
     [SerializeField] private float _price;
     [SerializeField] private GameObject _priceGroup;
     [SerializeField] private GameObject _purchased;
     [SerializeField] private GameObject _selected;
     [SerializeField] private GameObject _flag;
 
+    [SerializeField] private AudioVibroManager _audioVibroManager;
+
     private float _money;
 
     private void Start()
     {
         _money = PlayerPrefs.GetFloat("balance", 1000);
-        _moneyText.text = _money.ToString("f0");
+        _planeMoneyText.text = _money.ToString("f0");
+        _bgMoneyText.text = _money.ToString("f0");
+        _coeffMoneyText.text = _money.ToString("f0");
 
         if (PlayerPrefs.GetString("plane" + gameObject.name, "") != "")
         {
@@ -37,12 +42,15 @@ public class PlaneShop : MonoBehaviour
 
     public void PickThisPlane()
     {
-        if (PlayerPrefs.GetString("plane" + gameObject.name, "") == "")
+        _money = PlayerPrefs.GetFloat("balance", 1000);
+        if (PlayerPrefs.GetString("plane" + gameObject.name, "") == "" && gameObject.name != "0")
         {
             if (_money >= _price)
             {
                 _money -= _price;
-                _moneyText.text = _money.ToString("f0");
+                _planeMoneyText.text = _money.ToString("f0");
+                _bgMoneyText.text = _money.ToString("f0");
+                _coeffMoneyText.text = _money.ToString("f0");
                 PlayerPrefs.SetFloat("balance", _money);
                 PlayerPrefs.SetString("plane" + gameObject.name, "purchased");
                 _priceGroup.SetActive(false);
@@ -52,6 +60,11 @@ public class PlaneShop : MonoBehaviour
             {
                 return;
             }
+            _audioVibroManager.PlayBuySound();
+        }
+        else
+        {
+            _audioVibroManager.PlayClickSound();
         }
 
         _flag.transform.SetParent(transform);
@@ -68,6 +81,7 @@ public class PlaneShop : MonoBehaviour
 
     private void Update()
     {
+        
         if (transform.childCount == 5)
         {
             _selected.SetActive(true);

@@ -4,7 +4,9 @@ using UnityEngine.UI;
 
 public class BackgroundShop : MonoBehaviour
 {
-    [SerializeField] private TMP_Text _moneyText;
+    [SerializeField] private TMP_Text _planeMoneyText;
+    [SerializeField] private TMP_Text _bgMoneyText;
+    [SerializeField] private TMP_Text _coeffMoneyText;
     [SerializeField] private float _price;
     [SerializeField] private GameObject _priceGroup;
     [SerializeField] private GameObject _purchased;
@@ -13,12 +15,16 @@ public class BackgroundShop : MonoBehaviour
     [SerializeField] private Image _background;
     [SerializeField] private Sprite[] _backgroundSprites;
 
+    [SerializeField] private AudioVibroManager _audioVibroManager;
+
     private float _money;
 
     private void Start()
     {
         _money = PlayerPrefs.GetFloat("balance", 1000);
-        _moneyText.text = _money.ToString("f0");
+        _planeMoneyText.text = _money.ToString("f0");
+        _bgMoneyText.text = _money.ToString("f0");
+        _coeffMoneyText.text = _money.ToString("f0");
 
         if (PlayerPrefs.GetString("background" + gameObject.name, "") != "")
         {
@@ -39,12 +45,15 @@ public class BackgroundShop : MonoBehaviour
 
     public void PickThisBG()
     {
-        if (PlayerPrefs.GetString("background" + gameObject.name, "") == "")
+        _money = PlayerPrefs.GetFloat("balance", 1000);
+        if (PlayerPrefs.GetString("background" + gameObject.name, "") == "" && gameObject.name != "0")
         {
             if (_money >= _price)
             {
                 _money -= _price;
-                _moneyText.text = _money.ToString("f0");
+                _planeMoneyText.text = _money.ToString("f0");
+                _bgMoneyText.text = _money.ToString("f0");
+                _coeffMoneyText.text = _money.ToString("f0");
                 PlayerPrefs.SetFloat("balance", _money);
                 PlayerPrefs.SetString("background" + gameObject.name, "purchased");
                 _priceGroup.SetActive(false);
@@ -54,7 +63,13 @@ public class BackgroundShop : MonoBehaviour
             {
                 return;
             }
+            _audioVibroManager.PlayBuySound();
         }
+        else
+        {
+            _audioVibroManager.PlayClickSound();
+        }
+
         _flag.transform.SetParent(transform);
         RectTransform parentRect = GetComponent<RectTransform>();
         RectTransform childRect = _flag.GetComponent<RectTransform>();
@@ -71,6 +86,7 @@ public class BackgroundShop : MonoBehaviour
 
     private void Update()
     {
+        
         if (transform.childCount == 5)
         {
             _selected.SetActive(true);
