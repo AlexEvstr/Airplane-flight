@@ -84,4 +84,9 @@ public class MenuBtns : MonoBehaviour
         _coefficientsWindow.SetActive(false);
         _shopWindow.SetActive(true);
     }
+
+    public void ResetGameDataBtn()
+    {
+        PlayerPrefs.DeleteAll();
+    }
 }
