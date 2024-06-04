@@ -22,6 +22,9 @@ public class PlaneMovement : MonoBehaviour
     [SerializeField] private BettingSystem _bettingSystem;
     [SerializeField] private GameObject _takeOutBtn;
     [SerializeField] private Button[] _buttons;
+    [SerializeField] private AudioClip _flyAwaySound;
+    [SerializeField] private AudioClip _winSound;
+    [SerializeField] private AudioClip _loseSound;
 
     private float _maxTime;
     [SerializeField] private float[] _maxTimes;
@@ -38,6 +41,7 @@ public class PlaneMovement : MonoBehaviour
 
     public void StartBtn()
     {
+        GetComponent<AudioSource>().Play();
         foreach (var button in _buttons)
         {
             button.enabled = false;
@@ -102,6 +106,8 @@ public class PlaneMovement : MonoBehaviour
 
     IEnumerator FlyUpRight()
     {
+        GetComponent<AudioSource>().Stop();
+        GetComponent<AudioSource>().PlayOneShot(_flyAwaySound);
         if (lineWithArea != null)
         {
             Destroy(lineWithArea);
@@ -126,6 +132,7 @@ public class PlaneMovement : MonoBehaviour
     private IEnumerator ShowLosePanel()
     {
         yield return new WaitForSeconds(1f);
+        GetComponent<AudioSource>().PlayOneShot(_loseSound);
         _losePanel.SetActive(true);
     }
 
@@ -137,6 +144,7 @@ public class PlaneMovement : MonoBehaviour
     private IEnumerator ShowWinPanel()
     {
         yield return new WaitForSeconds(1f);
+        GetComponent<AudioSource>().PlayOneShot(_winSound);
         _winPanel.SetActive(true);
         _bettingSystem.WinBehavior();
     }
