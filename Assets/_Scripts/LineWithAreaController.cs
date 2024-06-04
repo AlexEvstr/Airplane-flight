@@ -6,6 +6,7 @@ public class LineWithAreaController : MonoBehaviour
     public Transform startPoint; // Точка с координатами (-11, -5)
     public Transform planeTransform; // Самолет
     public float arcHeight = 2f; // Высота дуги
+    [SerializeField] private Material _fillMaterial;
 
     private LineRenderer lineRenderer;
     private MeshFilter meshFilter;
@@ -23,8 +24,9 @@ public class LineWithAreaController : MonoBehaviour
             return;
         }
 
-        meshRenderer.material = new Material(Shader.Find("Unlit/Color"));
-        meshRenderer.material.color = Color.red;
+        
+        meshRenderer.material = _fillMaterial;
+        
 
         lineRenderer.positionCount = 50; // Установите достаточное количество сегментов для плавной дуги
     }
