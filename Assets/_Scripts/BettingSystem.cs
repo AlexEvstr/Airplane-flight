@@ -23,7 +23,7 @@ public class BettingSystem : MonoBehaviour
         if (auto == 0) Auto = false;
         else Auto = true;
         
-        _balance = PlayerPrefs.GetFloat("balance", 1000);
+        _balance = PlayerPrefs.GetFloat("balance", 1050);
         _balanceText.text = _balance.ToString("f0");
         _currentBet = PlayerPrefs.GetFloat("CurrentBet", 100);
         if (_currentBet > _balance)
