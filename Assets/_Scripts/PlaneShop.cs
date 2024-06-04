@@ -18,7 +18,7 @@ public class PlaneShop : MonoBehaviour
 
     private void Start()
     {
-        _money = PlayerPrefs.GetFloat("balance", 1000);
+        _money = PlayerPrefs.GetFloat("balance", 1050);
         _planeMoneyText.text = _money.ToString("f0");
         _bgMoneyText.text = _money.ToString("f0");
         _coeffMoneyText.text = _money.ToString("f0");
@@ -42,7 +42,7 @@ public class PlaneShop : MonoBehaviour
 
     public void PickThisPlane()
     {
-        _money = PlayerPrefs.GetFloat("balance", 1000);
+        _money = PlayerPrefs.GetFloat("balance", 1050);
         if (PlayerPrefs.GetString("plane" + gameObject.name, "") == "" && gameObject.name != "0")
         {
             if (_money >= _price)

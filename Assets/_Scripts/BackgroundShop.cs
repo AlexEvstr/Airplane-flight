@@ -21,7 +21,7 @@ public class BackgroundShop : MonoBehaviour
 
     private void Start()
     {
-        _money = PlayerPrefs.GetFloat("balance", 1000);
+        _money = PlayerPrefs.GetFloat("balance", 1050);
         _planeMoneyText.text = _money.ToString("f0");
         _bgMoneyText.text = _money.ToString("f0");
         _coeffMoneyText.text = _money.ToString("f0");
@@ -45,7 +45,7 @@ public class BackgroundShop : MonoBehaviour
 
     public void PickThisBG()
     {
-        _money = PlayerPrefs.GetFloat("balance", 1000);
+        _money = PlayerPrefs.GetFloat("balance", 1050);
         if (PlayerPrefs.GetString("background" + gameObject.name, "") == "" && gameObject.name != "0")
         {
             if (_money >= _price)

@@ -41,15 +41,18 @@ public class PlaneMovement : MonoBehaviour
 
     public void StartBtn()
     {
-        GetComponent<AudioSource>().Play();
-        foreach (var button in _buttons)
+        if (PlayerPrefs.GetFloat("balance", 1050) > 0)
         {
-            button.enabled = false;
-        }
-        _coefficient.StartCounting();
-        StartCoroutine(FlyAlongArc());
-        StartCoroutine(RandomTimer());
-        _takeOutBtn.SetActive(true);
+            GetComponent<AudioSource>().Play();
+            foreach (var button in _buttons)
+            {
+                button.enabled = false;
+            }
+            _coefficient.StartCounting();
+            StartCoroutine(FlyAlongArc());
+            StartCoroutine(RandomTimer());
+            _takeOutBtn.SetActive(true);
+        }  
     }
 
     IEnumerator FlyAlongArc()

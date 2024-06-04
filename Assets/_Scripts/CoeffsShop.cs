@@ -18,7 +18,7 @@ public class CoeffsShop : MonoBehaviour
 
     private void Start()
     {
-        _money = PlayerPrefs.GetFloat("balance", 1000);
+        _money = PlayerPrefs.GetFloat("balance", 1050);
         //_money = 1000000;
         _planeMoneyText.text = _money.ToString("f0");
         _bgMoneyText.text = _money.ToString("f0");
@@ -42,7 +42,7 @@ public class CoeffsShop : MonoBehaviour
 
     public void PickThisCoeff()
     {
-        _money = PlayerPrefs.GetFloat("balance", 1000);
+        _money = PlayerPrefs.GetFloat("balance", 1050);
         if (PlayerPrefs.GetString("maxCoeff" + gameObject.name, "") == "" && gameObject.name != "0")
         {
             if (_money >= _price)
