@@ -133,6 +133,7 @@ public class PlaneMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         GetComponent<AudioSource>().PlayOneShot(_loseSound);
+        if (GameAudio.isVibro) Vibration.VibrateNope();
         _losePanel.SetActive(true);
     }
 
@@ -145,6 +146,7 @@ public class PlaneMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         GetComponent<AudioSource>().PlayOneShot(_winSound);
+        if (GameAudio.isVibro) Vibration.VibratePeek();
         _winPanel.SetActive(true);
         _bettingSystem.WinBehavior();
     }
