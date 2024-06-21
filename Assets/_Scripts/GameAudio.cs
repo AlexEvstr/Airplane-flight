@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameAudio : MonoBehaviour
 {
     [SerializeField] private AudioClip _clickSound;
+    [SerializeField] private AudioClip _bonusSound;
+    [SerializeField] private AudioClip _coinSound;
     private AudioSource _audioSource;
     public static bool isVibro;
 
@@ -20,6 +20,18 @@ public class GameAudio : MonoBehaviour
     public void PlayClickSound()
     {
         _audioSource.PlayOneShot(_clickSound);
-        if (isVibro) Vibration.VibratePop();
+        if (isVibro) Vibration.VibrateIOS(ImpactFeedbackStyle.Light);
+    }
+
+    public void PlayBonusSound()
+    {
+        _audioSource.PlayOneShot(_bonusSound);
+        if (isVibro) Vibration.VibrateIOS(ImpactFeedbackStyle.Rigid);
+    }
+
+    public void PlayCoinSound()
+    {
+        _audioSource.PlayOneShot(_coinSound);
+        if (isVibro) Vibration.VibrateIOS(ImpactFeedbackStyle.Heavy);
     }
 }

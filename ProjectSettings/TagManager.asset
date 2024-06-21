@@ -5,6 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - Plane
+  - Plus100
+  - Plus500
+  - x2
+  - x5
+  - x10
+  - Coin
+  - x2Size
   layers:
   - Default
   - TransparentFX

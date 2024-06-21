@@ -26,7 +26,6 @@ public class LineWithAreaController : MonoBehaviour
 
         
         meshRenderer.material = _fillMaterial;
-        
 
         lineRenderer.positionCount = 50; // Установите достаточное количество сегментов для плавной дуги
     }

@@ -6,53 +6,48 @@ public class PlaneMovement : MonoBehaviour
 {
     private Vector2 startPoint = new Vector2(-2, -1);
     private Vector2 endPoint = new Vector2(1, 2);
-    private float duration = 5f; // Время, за которое самолет достигнет конечной точки
-    private float arcHeight = 0.5f; // Максимальная высота дуги
+    private float duration = 5f;
+    private float arcHeight = 0.5f;
 
-    private float minY = -1f; // Нижняя граница
-    private float maxY = 3f; // Верхняя граница
-    private float minX = -1f; // Левая граница
-    private float maxX = 2f; // Правая граница
-    private GameObject lineWithArea; // Объект LineWithArea
+    private float minY = -1f;
+    private float maxY = 3f;
+    private float minX = -1f;
+    private float maxX = 2f;
+    private GameObject lineWithArea;
     private Coroutine randomMovementCoroutine;
 
     [SerializeField] private GameObject _losePanel;
     [SerializeField] private GameObject _winPanel;
-    [SerializeField] private Coefficient _coefficient;
-    [SerializeField] private BettingSystem _bettingSystem;
     [SerializeField] private GameObject _takeOutBtn;
     [SerializeField] private Button[] _buttons;
     [SerializeField] private AudioClip _flyAwaySound;
     [SerializeField] private AudioClip _winSound;
     [SerializeField] private AudioClip _loseSound;
 
-    private float _maxTime;
-    [SerializeField] private float[] _maxTimes;
+    [SerializeField] ScoreCounter _scoreCounter;
+    [SerializeField] private BonusSpawner _bonusSpawner;
 
-    private bool _isWin;
+    public static bool isWin;
 
     void Start()
     {
-        _maxTime = _maxTimes[int.Parse(PlayerPrefs.GetString("maxCoeffSelected", "0"))];
-        _isWin = false;
-        lineWithArea = GameObject.Find("LineWithArea"); // Ищем объект LineWithArea
+        isWin = false;
+        lineWithArea = GameObject.Find("LineWithArea");
     }
 
 
     public void StartBtn()
     {
-        if (PlayerPrefs.GetFloat("balance", 1050) > 0)
+        _scoreCounter.StartIncreasingScore();
+        _bonusSpawner.SpawnBonuses();
+        GetComponent<AudioSource>().Play();
+        foreach (var button in _buttons)
         {
-            GetComponent<AudioSource>().Play();
-            foreach (var button in _buttons)
-            {
-                button.enabled = false;
-            }
-            _coefficient.StartCounting();
-            StartCoroutine(FlyAlongArc());
-            StartCoroutine(RandomTimer());
-            _takeOutBtn.SetActive(true);
-        }  
+            button.enabled = false;
+        }
+        StartCoroutine(FlyAlongArc());
+        //StartCoroutine(RandomTimer());
+        //_takeOutBtn.SetActive(true);
     }
 
     IEnumerator FlyAlongArc()
@@ -97,11 +92,8 @@ public class PlaneMovement : MonoBehaviour
         }
     }
 
-    IEnumerator RandomTimer()
+    public void LoseGame()
     {
-        float waitTime = Random.Range(1f, _maxTime);
-        yield return new WaitForSeconds(waitTime);
-        _takeOutBtn.SetActive(false);
         StopAllCoroutines();
         ShowLose();
         StartCoroutine(FlyUpRight());
@@ -127,17 +119,19 @@ public class PlaneMovement : MonoBehaviour
     {
         float x = Mathf.Lerp(startPoint.x, endPoint.x, t);
         float y = Mathf.Lerp(startPoint.y, endPoint.y, t) - arcHeight * Mathf.Sin(Mathf.PI * t);
-        y = Mathf.Max(y, startPoint.y); // Убедитесь, что y не опускается ниже начальной точки
+        y = Mathf.Max(y, startPoint.y);
 
         return new Vector2(x, y);
     }
 
     private IEnumerator ShowLosePanel()
     {
+        isWin = false;
         yield return new WaitForSeconds(1f);
         GetComponent<AudioSource>().PlayOneShot(_loseSound);
         if (GameAudio.isVibro) Vibration.VibrateNope();
         _losePanel.SetActive(true);
+        if (GameAudio.isVibro) Vibration.VibrateIOS(ImpactFeedbackStyle.Heavy);
     }
 
     private void ShowLose()
@@ -147,11 +141,12 @@ public class PlaneMovement : MonoBehaviour
 
     private IEnumerator ShowWinPanel()
     {
+        isWin = true;
         yield return new WaitForSeconds(1f);
         GetComponent<AudioSource>().PlayOneShot(_winSound);
         if (GameAudio.isVibro) Vibration.VibratePeek();
         _winPanel.SetActive(true);
-        _bettingSystem.WinBehavior();
+        if (GameAudio.isVibro) Vibration.VibrateIOS(ImpactFeedbackStyle.Heavy);
     }
 
     public void ShowWin()
@@ -159,14 +154,5 @@ public class PlaneMovement : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(FlyUpRight());
         StartCoroutine(ShowWinPanel());
-    }
-
-    private void Update()
-    {
-        if (BettingSystem.AutoCashOutAmout.ToString("f2") == Coefficient.CurrentCoefficient.ToString("f2") && BettingSystem.Auto && !_isWin)
-        {
-            ShowWin();
-            _isWin = true;
-        }
     }
 }

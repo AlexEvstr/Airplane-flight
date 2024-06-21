@@ -1,6 +1,5 @@
 using UnityEngine;
 using TMPro;
-
 public class PlaneShop : MonoBehaviour
 {
     [SerializeField] private TMP_Text _planeMoneyText;
@@ -18,10 +17,9 @@ public class PlaneShop : MonoBehaviour
 
     private void Start()
     {
-        _money = PlayerPrefs.GetFloat("balance", 1050);
+        _money = PlayerPrefs.GetFloat("balance", 0);
         _planeMoneyText.text = _money.ToString("f0");
         _bgMoneyText.text = _money.ToString("f0");
-        _coeffMoneyText.text = _money.ToString("f0");
 
         if (PlayerPrefs.GetString("plane" + gameObject.name, "") != "")
         {
@@ -42,7 +40,7 @@ public class PlaneShop : MonoBehaviour
 
     public void PickThisPlane()
     {
-        _money = PlayerPrefs.GetFloat("balance", 1050);
+        _money = PlayerPrefs.GetFloat("balance", 0);
         if (PlayerPrefs.GetString("plane" + gameObject.name, "") == "" && gameObject.name != "0")
         {
             if (_money >= _price)
@@ -50,7 +48,6 @@ public class PlaneShop : MonoBehaviour
                 _money -= _price;
                 _planeMoneyText.text = _money.ToString("f0");
                 _bgMoneyText.text = _money.ToString("f0");
-                _coeffMoneyText.text = _money.ToString("f0");
                 PlayerPrefs.SetFloat("balance", _money);
                 PlayerPrefs.SetString("plane" + gameObject.name, "purchased");
                 _priceGroup.SetActive(false);

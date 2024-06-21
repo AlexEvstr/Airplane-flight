@@ -12,9 +12,11 @@ public class ButtonsManager : MonoBehaviour
 
     private void Start()
     {
+        Screen.orientation = ScreenOrientation.Portrait;
         _background.sprite = _backgroundSprites[int.Parse(PlayerPrefs.GetString("backgroundSelected", "0"))];
         _plane.sprite = _planeSprites[int.Parse(PlayerPrefs.GetString("planeSelected", "0"))];
     }
+
 
     public void ReplayBtn()
     {

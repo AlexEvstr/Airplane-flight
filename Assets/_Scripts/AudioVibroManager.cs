@@ -18,8 +18,18 @@ public class AudioVibroManager : MonoBehaviour
         Vibration.Init();
         _audioSource = GetComponent<AudioSource>();
         int vibro = PlayerPrefs.GetInt("vibro", 1);
-        if (vibro == 1) isVibro = true;
-        else isVibro = false;
+        if (vibro == 1)
+        {
+            _vibroOff.SetActive(false);
+            _vibroOn.SetActive(true);
+            isVibro = true;
+        }
+        else
+        {
+            _vibroOn.SetActive(false);
+            _vibroOff.SetActive(true);
+            isVibro = false;
+        }
 
         int sound = PlayerPrefs.GetInt("Sound", 1);
         if (sound == 1) SoundOn();
@@ -29,13 +39,13 @@ public class AudioVibroManager : MonoBehaviour
     public void PlayClickSound()
     {
         _audioSource.PlayOneShot(_clickSound);
-        if (isVibro) Vibration.VibratePop();
+        if (isVibro) Vibration.VibrateIOS(ImpactFeedbackStyle.Light);
     }
 
     public void PlayBuySound()
     {
         _audioSource.PlayOneShot(_buySound);
-        if (isVibro) Vibration.Vibrate();
+        if (isVibro) Vibration.VibrateIOS(NotificationFeedbackStyle.Success);
     }
 
     public void SoundOff()
@@ -44,6 +54,7 @@ public class AudioVibroManager : MonoBehaviour
         _soundOff.SetActive(true);
         AudioListener.volume = 0;
         PlayerPrefs.SetInt("Sound", 0);
+        if (isVibro) Vibration.VibrateIOS(ImpactFeedbackStyle.Light);
     }
 
     public void SoundOn()
@@ -52,6 +63,7 @@ public class AudioVibroManager : MonoBehaviour
         _soundOn.SetActive(true);
         AudioListener.volume = 1;
         PlayerPrefs.SetInt("Sound", 1);
+        if (isVibro) Vibration.VibrateIOS(ImpactFeedbackStyle.Light);
     }
 
     public void VibroOff()
@@ -60,6 +72,7 @@ public class AudioVibroManager : MonoBehaviour
         _vibroOff.SetActive(true);
         isVibro = false;
         PlayerPrefs.SetInt("vibro", 0);
+        if (isVibro) Vibration.VibrateIOS(ImpactFeedbackStyle.Light);
     }
 
     public void VibroOn()
@@ -68,5 +81,6 @@ public class AudioVibroManager : MonoBehaviour
         _vibroOn.SetActive(true);
         isVibro = true;
         PlayerPrefs.SetInt("vibro", 1);
+        if (isVibro) Vibration.VibrateIOS(ImpactFeedbackStyle.Light);
     }
 }
